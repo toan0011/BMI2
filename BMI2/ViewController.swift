@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imgMinusWeight: UIImageView!
     
     var isTapedMale = false
+    var isTapedFemale = false
     var height = 100
     var weight:Int = 45
     var age = 20
@@ -57,15 +58,17 @@ class ViewController: UIViewController {
             viewContainIconMale.backgroundColor = UIColor(red: 0.60, green: 0.53, blue: 0.52, alpha: 1.00)
             viewContainIconFemale.backgroundColor = UIColor(red: 0.21, green: 0.21, blue: 0.26, alpha: 1.00)
             isTapedMale = true
+            isTapedFemale = false
         }
         
     }
     
     @IBAction func tapFemale(_ sender: Any) {
-        if isTapedMale {
+        if !isTapedFemale {
             viewContainIconFemale.backgroundColor = UIColor(red: 0.60, green: 0.53, blue: 0.52, alpha: 1.00)
             viewContainIconMale.backgroundColor = UIColor(red: 0.21, green: 0.21, blue: 0.26, alpha: 1.00)
             isTapedMale = false
+            isTapedFemale = true
         }
     }
     @IBAction func changeValueSlider(_ sender: UISlider) {
