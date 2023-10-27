@@ -95,6 +95,8 @@ class ViewController: UIViewController {
         age += 1
         txtValueAge.text = "\(age)"
     }
+    
+    
     @IBAction func caculate(_ sender: Any) {
         bmi = Float(weight) / pow(Float(height) / 100, 2)
         print(bmi)
@@ -107,13 +109,13 @@ class ViewController: UIViewController {
         if bmi < 18.5 {
             resultView.state = "THIN"
             resultView.comment = "You have a skinny body. Need nutritional supplements."
-        }else if bmi >= 18.5 && bmi <= 24.9{
+        }else if bmi <= 24.9{
             resultView.state = "NORMAL"
             resultView.comment = "You have a normal body weight. Good job!"
-        }else if bmi > 24.9 && bmi <= 29.9 {
+        }else if bmi <= 29.9 {
             resultView.state = "CHUBBY"
             resultView.comment = "You have a slightly chubby body. Please exercise more diligently."
-        }else if bmi > 29.9 && bmi <= 34.9 {
+        }else if bmi <= 34.9 {
             resultView.state = "FAT"
             resultView.comment = "You have an obese body. Pay attention to nutrition and exercise."
         }else{
@@ -121,6 +123,9 @@ class ViewController: UIViewController {
             resultView.comment = "Your body is dangerously obese. Pay attention to losing weight."
         }
         self.present(resultView, animated: true)
+    }
+    @IBAction func longPressMinusWeight(_ sender: Any) {
+        
     }
 }
 
