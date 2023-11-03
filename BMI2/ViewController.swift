@@ -30,10 +30,21 @@ class ViewController: UIViewController {
     
     var isTapedMale = false
     var isTapedFemale = false
-    var height = 100
+    var height = 150
     var weight:Int = 45
     var age = 20
     var bmi:Float = 0.0
+    var timer:Timer!
+    
+    enum Action {
+        case IncreaseWeight
+        case DecreaseWeight
+        case IncreaseAge
+        case DecreaseAge
+        case None
+    }
+    var action:Action = .None
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -76,23 +87,42 @@ class ViewController: UIViewController {
         txtValueHeight.text = "\(height) cm"
     }
     @IBAction func tapMinusWeight(_ sender: Any) {
-        if weight > 1 {
+        decreaseWeight()
+    }
+    @IBAction func tapPlusWeight(_ sender: Any) {
+        increaseWeight()
+    }
+    @IBAction func tapMinusAge(_ sender: Any) {
+        decreaseAge()
+    }
+    @IBAction func tapPlusAge(_ sender: Any) {
+        increaseAge()
+    }
+    
+    func decreaseWeight(){
+        if weight > 10{
             weight -= 1
         }
         txtValueWeight.text = "\(weight)"
     }
-    @IBAction func tapPlusWeight(_ sender: Any) {
-        weight += 1
-        txtValueWeight.text = "\(weight)"
-    }
-    @IBAction func tapMinusAge(_ sender: Any) {
+    func decreaseAge(){
         if age > 1 {
             age -= 1
         }
         txtValueAge.text = "\(age)"
     }
-    @IBAction func tapPlusAge(_ sender: Any) {
-        age += 1
+    func increaseWeight(){
+        if weight < 150{
+            weight += 1
+        }
+        
+        txtValueWeight.text = "\(weight)"
+    }
+    func increaseAge(){
+        if age < 120 {
+            age += 1
+        }
+        
         txtValueAge.text = "\(age)"
     }
     
@@ -124,8 +154,65 @@ class ViewController: UIViewController {
         }
         self.present(resultView, animated: true)
     }
-    @IBAction func longPressMinusWeight(_ sender: Any) {
-        
+    @IBAction func longPressMinusWeight(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began{
+            action = .DecreaseWeight
+            startTimer()
+        }else if sender.state == .ended {
+            action = .None
+            stopTimer()
+        }
+    }
+    
+    @IBAction func longPressPlusWeight(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began{
+            action = .IncreaseWeight
+            startTimer()
+        }else if sender.state == .ended {
+            action = .None
+            stopTimer()
+        }
+    }
+    @IBAction func longPressMinusAge(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began{
+            action = .DecreaseAge
+            startTimer()
+        }else if sender.state == .ended {
+            action = .None
+            stopTimer()
+        }
+    }
+    @IBAction func longPressPlusAge(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began{
+            action = .IncreaseAge
+            startTimer()
+        }else if sender.state == .ended {
+            action = .None
+            stopTimer()
+        }
+    }
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+        timer.fire()
+    }
+    
+    func stopTimer(){
+        timer.invalidate()
+    }
+    
+    @objc func runTimer(){
+        switch action {
+        case .DecreaseWeight:
+            decreaseWeight()
+        case .IncreaseWeight:
+            increaseWeight()
+        case .DecreaseAge:
+            decreaseAge()
+        case .IncreaseAge:
+            increaseAge()
+        default:
+            break
+        }
     }
 }
 

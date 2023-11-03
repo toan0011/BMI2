@@ -82,14 +82,14 @@
                                         <rect key="frame" x="20" y="243" width="368" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100 cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5H-Nf-d5z">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="150 cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5H-Nf-d5z">
                                                 <rect key="frame" x="134" y="74" width="99" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="aCa-0O-DzC">
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="50" maxValue="250" translatesAutoresizingMaskIntoConstraints="NO" id="aCa-0O-DzC">
                                                 <rect key="frame" x="15" y="132" width="337" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" red="0.85098040100000005" green="0.36470589040000001" blue="0.45098042490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -142,6 +142,7 @@
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="j8H-BO-sEr" appends="YES" id="bUC-7s-2Ka"/>
+                                                    <outletCollection property="gestureRecognizers" destination="ZHk-Ua-xkd" appends="YES" id="iPM-Ds-50e"/>
                                                 </connections>
                                             </imageView>
                                         </subviews>
@@ -172,6 +173,7 @@
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="tUY-he-LJh" appends="YES" id="lyU-lt-4Ni"/>
+                                                    <outletCollection property="gestureRecognizers" destination="ksw-tn-UsR" appends="YES" id="FEL-dw-OkZ"/>
                                                 </connections>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="CEh-9O-tlL">
@@ -181,6 +183,7 @@
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="SRP-pS-RpL" appends="YES" id="53A-1g-5Fh"/>
+                                                    <outletCollection property="gestureRecognizers" destination="kvP-FT-50S" appends="YES" id="VbA-GV-c4n"/>
                                                 </connections>
                                             </imageView>
                                         </subviews>
@@ -267,6 +270,21 @@
                         <action selector="longPressMinusWeight:" destination="BYZ-38-t0r" id="z68-zQ-Hsz"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ZHk-Ua-xkd" userLabel="Plus Weight Long Press">
+                    <connections>
+                        <action selector="longPressPlusWeight:" destination="BYZ-38-t0r" id="R1F-Q8-Thi"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ksw-tn-UsR" userLabel="Minus Age Long Press">
+                    <connections>
+                        <action selector="longPressMinusAge:" destination="BYZ-38-t0r" id="bpD-lI-ieh"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kvP-FT-50S" userLabel="Plus Age Long Press">
+                    <connections>
+                        <action selector="longPressPlusAge:" destination="BYZ-38-t0r" id="AIn-ff-71i"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1486" y="661"/>
         </scene>
@@ -341,30 +359,12 @@
             </objects>
             <point key="canvasLocation" x="-706.10687022900765" y="660.56338028169023"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="2Pb-AU-65k">
-            <objects>
-                <viewController id="3dF-3B-jX6" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5af-45-snd">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vw6-OI-02r"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rSa-mV-zi0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1486" y="4"/>
-        </scene>
     </scenes>
     <resources>
         <image name="iconFemale" width="80" height="80"/>
         <image name="iconMale" width="80" height="80"/>
         <image name="iconMinus" width="48" height="48"/>
         <image name="iconPlus" width="48" height="48"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
